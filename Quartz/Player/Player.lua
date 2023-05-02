@@ -779,6 +779,12 @@ do
 				passValue = 'hideblizz',
 				order = 101,
 			},
+			showticks = {
+						type = "toggle",
+						name = L["Show channeling ticks"],
+						desc = L["Show damage / mana ticks while channeling spells like Drain Life or Blizzard"],
+						order = 102,
+					},
 			h = {
 				type = 'range',
 				name = L["Height"],
