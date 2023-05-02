@@ -403,8 +403,7 @@ local channelData, channelingTicks = {
 	[16914] = 10, -- Hurricane
 	-- priest
 	[15407] = 3, -- mind flay
-	[48045] = 5, -- mind sear
-	[47540] = 2, -- penance
+	
 	-- mage
 	[5143] = 5, -- arcane missiles
 	[10] = 5, -- blizzard
