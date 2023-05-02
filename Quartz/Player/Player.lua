@@ -199,7 +199,7 @@ function QuartzPlayer:OnInitialize()
 	self.db = db
 	Quartz:RegisterDefaults("Player", "profile", {
 		hideblizz = true,
-		
+		showticks = true,
 		--x =  -- applied automatically in applySettings()
 		y = 180,
 		h = 25,
@@ -280,6 +280,64 @@ function QuartzPlayer:OnEnable()
 	end)
 	Quartz.ApplySettings()
 end
+
+local sparkfactory = {
+
+	__index = function(t,k)		local spark = castBar:CreateTexture(nil, 'OVERLAY')
+
+		t[k] = 	spark
+
+		spark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
+
+		spark:SetVertexColor(unpack(Quartz3.db.profile.sparkcolor))
+
+		spark:SetBlendMode('ADD')
+
+		spark:SetWidth(20)
+
+		spark:SetHeight(db.h*2.2)
+
+		return spark
+
+	end
+
+}
+
+local barticks = setmetatable({}, sparkfactory)
+
+local function setBarTicks(ticknum)
+
+	if( ticknum and ticknum > 0) then
+
+		local delta = ( db.w / ticknum )
+
+		for k = 1,ticknum do
+
+			local t = barticks[k]
+
+			t:ClearAllPoints()
+
+			t:SetPoint("CENTER", castBar, "LEFT", delta * k, 0 )
+
+			t:Show()
+
+		end
+
+	else
+
+		barticks[1].Hide = nil
+
+		for _, v in ipairs(barticks) do
+
+			v:Hide()
+
+		end
+
+	end
+
+end
+
+Player.setBarTicks = setBarTicks
 
 function QuartzPlayer:UNIT_SPELLCAST_SENT(unit, spell, rank, target)
 	if unit ~= 'player' then
