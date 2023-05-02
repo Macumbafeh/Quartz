@@ -367,6 +367,8 @@ function QuartzPlayer:UNIT_SPELLCAST_START(unit)
 
 	castBar:SetStatusBarColor(unpack(Quartz.db.profile.castingcolor))
 	
+	setBarTicks(0)
+	
 	castBar:SetValue(0)
 	castBarParent:Show()
 	castBarParent:SetAlpha(db.profile.alpha)
@@ -388,6 +390,39 @@ function QuartzPlayer:UNIT_SPELLCAST_START(unit)
 		castBarTimeText:SetPoint('RIGHT', castBar, 'RIGHT', -1 * db.profile.timetextx, db.profile.timetexty)
 		castBarTimeText:SetJustifyH("RIGHT")
 	end
+end
+
+local channelData, channelingTicks = {
+	-- warlock
+	[1120] = 5, -- drain soul
+	[689] = 5, -- drain life
+	[5138] = 5, -- drain mana
+	[5740] = 4, -- rain of fire
+	-- druid
+	[740] = 4, -- Tranquility
+	[16914] = 10, -- Hurricane
+	-- priest
+	[15407] = 3, -- mind flay
+	[48045] = 5, -- mind sear
+	[47540] = 2, -- penance
+	-- mage
+	[5143] = 5, -- arcane missiles
+	[10] = 5, -- blizzard
+}
+
+local function getChannelingTicks(spell)
+	if not db.showticks then
+		return 0
+	end
+
+	if not channelingTicks then
+		channelingTicks = {}
+		for k,v in pairs(channelData) do
+			channelingTicks[(GetSpellInfo(k))] = v
+		end
+	end
+
+	return channelingTicks[spell] or 0
 end
 
 function QuartzPlayer:UNIT_SPELLCAST_CHANNEL_START(unit)
