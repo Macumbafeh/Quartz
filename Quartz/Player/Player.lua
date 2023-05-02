@@ -437,7 +437,11 @@ function QuartzPlayer:UNIT_SPELLCAST_CHANNEL_START(unit)
 	self.delay = 0
 	self.casting = nil
 	self.channeling = true
+	--FixMe: How do we work this out?
+	self.channelingTicks = getChannelingTicks( spell )
 	self.fadeOut = nil
+	
+	setBarTicks(self.channelingTicks)
 
 	castBar:SetStatusBarColor(unpack(Quartz.db.profile.channelingcolor))
 	
