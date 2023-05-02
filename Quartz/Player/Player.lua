@@ -477,6 +477,7 @@ function QuartzPlayer:UNIT_SPELLCAST_STOP(unit)
 		self.fadeOut = true
 		self.stopTime = GetTime()
 		
+		setBarTicks(0)
 		castBar:SetValue(1.0)
 		castBar:SetStatusBarColor(unpack(Quartz.db.profile.completecolor))
 		
@@ -493,6 +494,7 @@ function QuartzPlayer:UNIT_SPELLCAST_CHANNEL_STOP(unit)
 		self.fadeOut = true
 		self.stopTime = GetTime()
 		
+		setBarTicks(0)
 		castBar:SetValue(0)
 		castBar:SetStatusBarColor(unpack(Quartz.db.profile.completecolor))
 		
@@ -511,6 +513,7 @@ function QuartzPlayer:UNIT_SPELLCAST_FAILED(unit)
 	if not self.stopTime then
 		self.stopTime = GetTime()
 	end
+	setBarTicks(0)
 	castBar:SetValue(1.0)
 	castBar:SetStatusBarColor(unpack(Quartz.db.profile.failcolor))
 	
@@ -528,6 +531,7 @@ function QuartzPlayer:UNIT_SPELLCAST_INTERRUPTED(unit)
 	if not self.stopTime then
 		self.stopTime = GetTime()
 	end
+	setBarTicks(0)
 	castBar:SetValue(1.0)
 	castBar:SetStatusBarColor(unpack(Quartz.db.profile.failcolor))
 	
