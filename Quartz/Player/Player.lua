@@ -337,7 +337,7 @@ local function setBarTicks(ticknum)
 
 end
 
-Player.setBarTicks = setBarTicks
+Quartz.setBarTicks = setBarTicks
 
 function QuartzPlayer:UNIT_SPELLCAST_SENT(unit, spell, rank, target)
 	if unit ~= 'player' then
