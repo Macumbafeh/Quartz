@@ -398,6 +398,8 @@ local channelData, channelingTicks = {
 	[689] = 5, -- drain life
 	[5138] = 5, -- drain mana
 	[5740] = 4, -- rain of fire
+	[755] = 10, -- health funnel
+	[1949] = 15, -- hellfire
 	-- druid
 	[740] = 4, -- Tranquility
 	[16914] = 10, -- Hurricane
@@ -405,8 +407,16 @@ local channelData, channelingTicks = {
 	[15407] = 3, -- mind flay
 	
 	-- mage
-	[5143] = 5, -- arcane missiles (3 ticks rank1)
-	[10] = 8, -- blizzard (8 ticks?)
+
+	[10] = 8, -- blizzard
+	[5143] = 3, -- arcane missiles r1
+	[5144] = 4, -- arcane missiles r2
+	[5145] = 5, -- arcane missiles
+	
+
+	-- hunter
+	[GetSpellInfo(1510)] = 6, -- volley
+	
 }
 
 local function getChannelingTicks(spell)
