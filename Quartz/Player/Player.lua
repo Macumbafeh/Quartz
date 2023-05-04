@@ -289,13 +289,13 @@ local sparkfactory = {
 
 		spark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
 
-		spark:SetVertexColor(unpack(Quartz3.db.profile.sparkcolor))
+		spark:SetVertexColor(unpack(Quartz.db.profile.sparkcolor))
 
 		spark:SetBlendMode('ADD')
 
 		spark:SetWidth(20)
 
-		spark:SetHeight(db.h*2.2)
+		spark:SetHeight(db.profile.h*2.2)
 
 		return spark
 
@@ -309,7 +309,7 @@ local function setBarTicks(ticknum)
 
 	if( ticknum and ticknum > 0) then
 
-		local delta = ( db.w / ticknum )
+		local delta = ( db.profile.w / ticknum )
 
 		for k = 1,ticknum do
 
@@ -405,12 +405,12 @@ local channelData, channelingTicks = {
 	[15407] = 3, -- mind flay
 	
 	-- mage
-	[5143] = 5, -- arcane missiles
-	[10] = 5, -- blizzard
+	[5143] = 5, -- arcane missiles (3 ticks rank1)
+	[10] = 8, -- blizzard (8 ticks?)
 }
 
 local function getChannelingTicks(spell)
-	if not db.showticks then
+	if not db.profile.showticks then
 		return 0
 	end
 
@@ -506,6 +506,7 @@ function QuartzPlayer:UNIT_SPELLCAST_FAILED(unit)
 	if unit ~= 'player' or self.channeling then
 		return
 	end
+	if UnitCastingInfo(unit) or UnitChannelInfo(unit) then return end
 	self.targetName = nil
 	self.casting = nil
 	self.channeling = nil
@@ -821,12 +822,15 @@ do
 				passValue = 'hideblizz',
 				order = 101,
 			},
-			showticks = {
-						type = "toggle",
-						name = L["Show channeling ticks"],
-						desc = L["Show damage / mana ticks while channeling spells like Drain Life or Blizzard"],
-						order = 102,
-					},
+			-- showticks = {
+				-- type = "toggle",
+				-- name = L["Show channeling ticks"],
+				-- desc = L["Show damage / mana ticks while channeling spells like Drain Life or Blizzard"],
+				-- get = get,
+				-- set = set,
+				-- passValue = 'showticks',
+				-- order = 102,
+				--	},
 			h = {
 				type = 'range',
 				name = L["Height"],
