@@ -415,11 +415,11 @@ local channelData, channelingTicks = {
 	[12051] = 4, -- Evocation
 
 -- First aids
-[1251] = 6, -- linen Bandage
-[2581] = 6, -- Heavy Linen Bandage
-[3530] = 7, --  Wool Bandage
-[3531] = 7, -- Heavy Wool Bandage
-[6450] = 8, -- Silk Bandage
+-- [1251] = 6, -- linen Bandage
+-- [2581] = 6, -- Heavy Linen Bandage
+-- [3530] = 7, --  Wool Bandage
+-- [3531] = 7, -- Heavy Wool Bandage
+[GetItemInfo(6450)] = 8, -- Silk Bandage
 
 	-- hunter
 	[GetSpellInfo(1510)] = 6, -- volley
