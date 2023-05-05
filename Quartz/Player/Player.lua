@@ -409,8 +409,8 @@ local channelData, channelingTicks = {
 	-- mage
 
 	[10] = 8, -- blizzard
-	[5143] = 3, -- arcane missiles r1
-	[5144] = 4, -- arcane missiles r2
+	-- [5143] = 3, -- arcane missiles r1
+	-- [5144] = 4, -- arcane missiles r2
 	[5145] = 5, -- arcane missiles
 	[12051] = 4, -- Evocation
 
@@ -426,7 +426,7 @@ local channelData, channelingTicks = {
 	
 }
 
-local function getChannelingTicks(spell)
+local function getChannelingTicks(spell, spellid)
 	if not db.profile.showticks then
 		return 0
 	end
@@ -438,7 +438,7 @@ local function getChannelingTicks(spell)
 		end
 	end
 
-	return channelingTicks[spell] or 0
+	return channelingTicks[spell] or channelingTicks[spellid] or 0
 end
 
 function QuartzPlayer:UNIT_SPELLCAST_CHANNEL_START(unit)
