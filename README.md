@@ -5,7 +5,7 @@ Quartz for TBC 2.4.3 modified with wotlk code to add ticks on channeled spells.
 - Modified some ticks which wasn't exact for same spells
 - Added more spells, i took the one from tbc classic and i added also Evocation
 - Added Bandage 
-#Screens
+# Screens
 ![image](https://user-images.githubusercontent.com/47739411/236384809-c60a43b1-5863-47a1-9e18-686b6cf941c3.png)
 
 ![image](https://user-images.githubusercontent.com/47739411/236384877-147978af-56fd-4e81-8e11-12f63db6c34f.png)
