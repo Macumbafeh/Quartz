@@ -393,37 +393,33 @@ function QuartzPlayer:UNIT_SPELLCAST_START(unit)
 end
 
 local channelData, channelingTicks = {
-	-- warlock
-	[1120] = 5, -- drain soul
-	[689] = 5, -- drain life
-	[5138] = 5, -- drain mana
-	[5740] = 4, -- rain of fire
-	[755] = 10, -- health funnel
-	[1949] = 15, -- hellfire
-	-- druid
-	[740] = 4, -- Tranquility
-	[16914] = 10, -- Hurricane
-	-- priest
-	[15407] = 3, -- mind flay
-	
-	-- mage
-
-	[10] = 8, -- blizzard
-	-- [5143] = 3, -- arcane missiles r1
-	-- [5144] = 4, -- arcane missiles r2
-	[5145] = 5, -- arcane missiles
-	[12051] = 4, -- Evocation
-
--- First aids
--- [1251] = 6, -- linen Bandage
--- [2581] = 6, -- Heavy Linen Bandage
--- [3530] = 7, --  Wool Bandage
--- [3531] = 7, -- Heavy Wool Bandage
-[GetItemInfo(6450)] = 8, -- Silk Bandage
-
-	-- hunter
-	[GetSpellInfo(1510)] = 6, -- volley
-	
+    -- warlock
+    [1120] = 5, -- drain soul
+    [689] = 5, -- drain life
+    [5138] = 5, -- drain mana
+    [5740] = 4, -- rain of fire
+    [755] = 10, -- health funnel
+    [1949] = 15, -- hellfire
+    -- druid
+    [740] = 4, -- Tranquility
+    [16914] = 10, -- Hurricane
+    -- priest
+    [15407] = 3, -- mind flay
+    
+    -- mage
+    [12051] = 4, -- Evocation
+    -- [5143] = 3, -- arcane missiles r1
+    -- [5144] = 4, -- arcane missiles r2
+    [5145] = 5, -- arcane missiles
+    [10] = 8, -- blizzard
+    -- hunter
+    [1510] = 6, -- volley
+    -- First aids
+    -- [1251] = 6, -- linen Bandage
+    -- [2581] = 6, -- Heavy Linen Bandage
+    -- [3530] = 7, --  Wool Bandage
+    -- [3531] = 7, -- Heavy Wool Bandage
+    [21991] = 8, -- Silk Bandage
 }
 
 local function getChannelingTicks(spell, spellid)
