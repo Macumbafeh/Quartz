@@ -422,20 +422,34 @@ local channelData, channelingTicks = {
     [21991] = 8, -- Silk Bandage
 }
 
+
 local function getChannelingTicks(spell, spellid)
-	if not db.profile.showticks then
-		return 0
-	end
+    if not db.profile.showticks then
+        return 0
+    end
 
-	if not channelingTicks then
-		channelingTicks = {}
-		for k,v in pairs(channelData) do
-			channelingTicks[(GetSpellInfo(k))] = v
-		end
-	end
+    if not channelingTicks then
+        channelingTicks = {}
+        for k,v in pairs(channelData) do
+            if type(k) == "number" then
+                channelingTicks[k] = v
+            else
+                local itemName, _, _, _, _, _, _, _, _, _, _ = GetItemInfo(k)
+                if itemName then
+                    channelingTicks[itemName] = v
+                else
+                    local spellName, _, _, _, _, _, _, _, _, _, _ = GetSpellInfo(k)
+                    if spellName then
+                        channelingTicks[spellName] = v
+                    end
+                end
+            end
+        end
+    end
 
-	return channelingTicks[spell] or channelingTicks[spellid] or 0
+    return channelingTicks[spell] or channelingTicks[spellid] or 0
 end
+
 
 function QuartzPlayer:UNIT_SPELLCAST_CHANNEL_START(unit)
 	if unit ~= 'player' then
