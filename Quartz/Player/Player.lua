@@ -348,6 +348,9 @@ local function setBarTicks(ticknum)
 
          	t:SetHeight(db.profile.h*1.0) -- Height of ticks based on castbar size.
 
+
+			--== Animation for ticks to fade-in, alpha is adjustable by user settings in option frame ==--			
+
 			local tickalpha = Quartz.db.profile.tickalpha.value
 
 			UIFrameFadeIn(t, FadeInTime, 0, tickalpha)
