@@ -106,6 +106,9 @@ function Quartz:OnInitialize()
 	self:RegisterDefaults("profile", {
 		hidesamwise = true,
 		
+	    tickalpha = {
+	        ["value"] = 0.7,
+	    },
 		sparkcolor = {1,1,1,0.5},
 		spelltextcolor = {1, 1, 1},
 		timetextcolor = {1, 1, 1},
@@ -361,6 +364,22 @@ do
 						set = set,
 						passValue = 'borderalpha',
 						order = 104,
+					},
+					tickalpha = {
+						type = 'range',
+						name = "Tick Alpha",
+						desc = "Set the alpha of the casting bar ticks",
+						isPercent = true,
+						min = 0,
+						max = 1,
+						step = 0.025,
+			            get = function(info)
+			                return self.db.profile.tickalpha.value
+			            end,
+			            set = function(info, value)
+			                self.db.profile.tickalpha.value = value end,
+						passValue = 'tickalpha.value',
+						order = 105,
 					},
 				},
 			}
