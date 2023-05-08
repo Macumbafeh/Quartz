@@ -121,6 +121,7 @@ function Quartz:OnInitialize()
 		
 		backgroundalpha = 1,
 		borderalpha = 1,
+		tickwidth = 2.4,
 	})
 	if ( EarthFeature_AddButton ) then
 		EarthFeature_AddButton(
@@ -254,8 +255,8 @@ do
 			},
 			colors = {
 				type = 'group',
-				name = L["Colors"],
-				desc = L["Colors"],
+				name = L["Colors"] .. "|cff00ff00 and Ticks|r",
+				desc = L["Colors"] .. " and casting bar ticks alpha/width.",
 				order = 450,
 				args = {
 					spelltextcolor = {
@@ -380,6 +381,18 @@ do
 			                self.db.profile.tickalpha.value = value end,
 						passValue = 'tickalpha.value',
 						order = 105,
+					},
+					tickwidth = {
+						type = 'range',
+						name = "Tick Width",
+						desc = "Adjust size of casting bar ticks, to match your UI scale.\nBest value for default UI scale is 2.4",
+						min = 0.5,
+						max = 5,
+						step = 0.1,
+						order = 106,
+						get = get,
+						set = set,
+						passValue = 'tickwidth',
 					},
 				},
 			}
