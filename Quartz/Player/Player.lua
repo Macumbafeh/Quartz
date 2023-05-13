@@ -344,7 +344,9 @@ local function setBarTicks(ticknum)
 
           	t:SetBlendMode('BLEND')
 
-         	t:SetWidth(2)
+          	local tickwidth = Quartz.db.profile.tickwidth
+
+         	t:SetWidth(tickwidth)
 
          	t:SetHeight(db.profile.h*1.0) -- Height of ticks based on castbar size.
 
